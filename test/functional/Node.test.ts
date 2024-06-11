@@ -15,6 +15,12 @@ test(`Create Node`, { tag: '@Smoke'}, async ({ loginPage, homePage, nodePage }) 
     await test.step(`Login to Moralis`, async () => {
         await loginPage.loginToApplication();
     });
+    
+    //To be clarified
+    await test.step(`Handle Captcha - Manual)`, async () => {
+        await loginPage.handleCaptcha();
+    });
+
     await test.step(`Verify User is logged in and navigated to Home page`, async () => {
         await homePage.verifyHomePage();
     });

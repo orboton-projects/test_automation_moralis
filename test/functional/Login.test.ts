@@ -33,10 +33,10 @@ test.describe('Negative Login Scenarios', () => {
         // Check if the "Accept all" button exists and click it if present
     await loginPage.acceptAll();
         
-    await test.step(`Login to Moralis`, async () => {
+    await test.step(`Login with Invalid Email`, async () => {
         await loginPage.loginWithInvalidEmail();
     });
-    await test.step(`Verify User is logged in and navigated to Home page`, async () => {
+    await test.step(`Verify Login Failed with Error`, async () => {
         await loginPage.verifySomethingWentWrong();
     });  });
 
@@ -48,14 +48,14 @@ test.describe('Negative Login Scenarios', () => {
             // Check if the "Accept all" button exists and click it if present
         await loginPage.acceptAll();
             
-        await test.step(`Login to Moralis`, async () => {
-            await loginPage.loginWithEmptyPassword();
+        await test.step(`Login with Invalid Password`, async () => {
+            await loginPage.loginWithInvalidPassword();
         });
-        await test.step(`Verify User is logged in and navigated to Home page`, async () => {
+        await test.step(`Verify Login Failed with Error`, async () => {
             await loginPage.verifySomethingWentWrong();
         });
     });  
-    test(`Should not login with empty password`, { tag: '@Smoke'}, async ({ loginPage }) => {
+    test(`Should not login with empty email`, { tag: '@Smoke'}, async ({ loginPage }) => {
         await test.step(`Navigate to Application`, async () => {
             await loginPage.navigateToURL();
         });
@@ -63,10 +63,10 @@ test.describe('Negative Login Scenarios', () => {
         await loginPage.acceptAll();
             
         await test.step(`Login to Moralis`, async () => {
-            await loginPage.loginWithEmptyPassword();
+            await loginPage.loginWithEmptyEmail();
         });
-        await test.step(`Verify User is logged in and navigated to Home page`, async () => {
-            await loginPage.verifyPleaseFillInTheFieldPassword();
+        await test.step(`Verify Error - Please Fill In The Field Email`, async () => {
+            await loginPage.verifyPleaseFillInTheFieldEmail();
         });
     }); 
 });
