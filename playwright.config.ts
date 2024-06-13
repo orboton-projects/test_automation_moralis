@@ -1,6 +1,6 @@
 
 import { PlaywrightTestConfig } from '@playwright/test';
-import { testConfig } from './testConfig';
+import {testConfig} from './testConfig'
 const ENV = process.env.npm_config_ENV;
 
 if (!ENV || ![`qa`, `dev`, `qaApi`, `devApi`].includes(ENV)) {
@@ -20,7 +20,11 @@ const config: PlaywrightTestConfig = {
   retries: 0,
 
   //Reporters
-  reporter: [[`./CustomReporterConfig.ts`], [`allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }]],
+  reporter: [
+    [`./CustomReporterConfig.ts`], 
+    [`allure-playwright`], 
+    [`html`, { outputFolder: 'html-report', open: 'never' }]
+  ],
 
   projects: [
     {
@@ -127,12 +131,12 @@ const config: PlaywrightTestConfig = {
     //     }
     //   },
     // },
-    {
-      name: `API`,
-      use: {
-        baseURL: testConfig[ENV]
-      }
-    }
+    // {
+    //   name: `API`,
+    //   use: {
+    //     baseURL: testConfig[ENV]
+    //   }
+    // }
   ],
 };
 export default config;

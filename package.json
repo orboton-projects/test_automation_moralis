@@ -7,7 +7,7 @@
     "test": "npx playwright test",
     "test:login": "npx playwright test --workers=1 --grep @Smoke",
     "test:ui": "npx playwright test --grep @Smoke --ui",
-    "test:api": "npx playwright test --grep @API --workers=1 --project=Chrome",
+    "test:api": "npx playwright test --grep @API --workers=1",
     "test:record": "npx playwright codegen",
     "allureReport": "allure serve"
   },
@@ -28,9 +28,11 @@
     "crypto-js": "^4.2.0",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
+    "joi": "^17.13.1",
     "moralis": "^2.26.4",
     "npm": "^10.7.0",
     "pg": "^8.11.5",
+    "playwright": "^1.44.1",
     "typescript": "^5.4.5",
     "winston": "^3.13.0"
   },
