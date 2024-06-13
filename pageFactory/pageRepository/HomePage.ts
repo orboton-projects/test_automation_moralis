@@ -1,5 +1,4 @@
 import { Page, BrowserContext, expect } from '@playwright/test';
-import { testConfig } from '../../testConfig';
 import { WebActions } from '../../lib/WebActions';
 
 let webActions: WebActions;
@@ -20,6 +19,10 @@ export class HomePage {
     }
 
     async navigateToNode(): Promise<void> {
-        await this.page.getByRole('button', { name: 'Nodes New' }).click();
+        await this.page.locator("[title='Nodes']").click();
+    }
+
+    async navigateToApiKeys(): Promise<void> {
+        await this.page.locator("[title='API Keys']").click();
     }
 }

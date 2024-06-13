@@ -1,5 +1,5 @@
 import { Page, BrowserContext, Locator, expect } from '@playwright/test';
-import { testConfig } from '../../testConfig';
+import { testConfig } from '../../testConfig.js';
 import { WebActions } from '../../lib/WebActions';
 
 let webActions: WebActions;
@@ -32,6 +32,9 @@ export class LoginPage {
         await this.page.getByTestId('test-password').getByTestId('test-typography').click();
         await this.page.getByTestId('test-password').getByTestId('test-input-input').fill(testConfig.password);
         await this.page.getByTestId('test-button').click();
+    }
+
+    async handleCaptcha(): Promise<void> {
         console.log('Please solve the CAPTCHA manually.');
         await this.page.waitForTimeout(60000); // Wait for 60s to manual captcha intervention
     }
@@ -52,20 +55,21 @@ export class LoginPage {
         await this.page.getByTestId('test-button').click();
     }
 
-    async loginWithEmptyPassword(): Promise<void> {
+    async loginWithEmptyEmail(): Promise<void> {
         await this.page.getByTestId('test-email').getByTestId('test-typography').click();
-        await this.page.getByTestId('test-email').getByTestId('test-input-input').fill(testConfig.email);
+        await this.page.getByTestId('test-email').getByTestId('test-input-input').fill('');
         await this.page.getByTestId('test-password').getByTestId('test-typography').click();
-        await this.page.getByTestId('test-password').getByTestId('test-input-input').fill('');
-        await this.page.getByTestId('test-button').click();
+        await this.page.getByTestId('test-password').getByTestId('test-input-input').fill(testConfig.password);
     }
 
     async verifySomethingWentWrong(): Promise<void> {
-        await expect(this.page.getByTestId('test-notification-title')).toContainText('Something went wrong!');
+        await expect(this.page.getByTestId(
+            'test-notification-title')).toContainText('Something went wrong!');
     }
 
-    async verifyPleaseFillInTheFieldPassword(): Promise<void> {
-        await expect(this.page.getByTestId('test-password').getByTestId('test-input-feedback')).toContainText('Please fill in this field.');
+    async verifyPleaseFillInTheFieldEmail(): Promise<void> {
+        await expect(this.page.getByTestId('test-email').getByTestId(
+            'test-input-feedback')).toContainText('Please fill in this field.');
         }
     
 }

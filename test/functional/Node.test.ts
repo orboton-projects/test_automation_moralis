@@ -33,6 +33,10 @@ test(`Create Node`, { tag: '@Smoke'}, async ({ loginPage, homePage, nodePage }) 
         await nodePage.createNode();
     });
 
+    await test.step(`Verify Node Created`, async () => {
+        await nodePage.verifyNodeCreated();
+    });
+
     await test.step(`Delete the node`, async () => {
         await nodePage.deleteNode();
     });

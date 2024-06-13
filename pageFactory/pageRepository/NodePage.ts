@@ -16,15 +16,18 @@ export class NodePage {
 
     async createNode(): Promise<void> {
         // Create Node
-       await this.page.getByRole('button', { name: 'Nodes New' }).click();
        await expect(this.page.locator('#main_top')).toContainText('Create a New Node');
        await this.page.getByRole('button', { name: 'Create a New Node' }).click();
        await this.page.getByTestId('test-CardCountrySelect').selectOption('Ethereum');
        await this.page.getByTestId('mui-select').selectOption('0x1-Mainnet');
        await this.page.getByTestId('mui-modal').getByTestId('mui-button-primary').click();
        await expect(this.page.locator('h2')).toContainText('Your Nodes');
-       await expect(this.page.getByTestId('mui-accordion').getByRole('paragraph')).toContainText('1 Nodes');
    }
+
+   async verifyNodeCreated(): Promise<void> {
+    // Verify Node Created
+   await expect(this.page.getByTestId('mui-accordion').getByRole('paragraph')).toContainText('1 Nodes');
+}
 
     async deleteNode(): Promise<void> {
         // Delete Node
