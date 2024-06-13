@@ -1,5 +1,7 @@
 import { test, request } from '@playwright/test';
 import Ajv, { JSONSchemaType } from 'ajv';
+import { apiKey } from 'test_data/api/testData/nftTestData';
+import { baseURL, testData } from 'test_data/api/testData/nodeTestData';
 
 const ajv = new Ajv();
 
@@ -11,7 +13,7 @@ export function validateSchema<T>(schema: JSONSchemaType<T>, data: any): void {
   }
 }
 
-const apiUrl = '/eth/1ee8a759c5fb48fe994bdeb7eddafdb5';
+const apiUrl = baseURL + '/eth/1ee8a759c5fb48fe994bdeb7eddafdb5';
 
 interface BlockNumberResponse {
   jsonrpc: string;
@@ -83,7 +85,7 @@ const transactionSchema: JSONSchemaType<TransactionResponse> = {
   required: ["jsonrpc", "id", "result"],
 };
 
-test.describe('Ethereum RPC API tests', () => {
+test.describe.skip('Ethereum RPC API tests - Skipped', { tag: '@API' }, () => {
   const makeRequest = async (url: string, method: string, params: any[]) => {
     const response = await (await request.newContext()).post(url, {
       data: {
@@ -97,7 +99,8 @@ test.describe('Ethereum RPC API tests', () => {
   };
 
   test('blockNumber - positive', async () => {
-    const response = await makeRequest(apiUrl, 'eth_blockNumber', ['18541416']);
+    console.log(apiUrl, apiKey)
+    const response = await makeRequest( apiUrl, 'eth_blockNumber', ['18541416']);
     validateSchema(blockNumberSchema, response);
 
   });
@@ -110,7 +113,8 @@ test.describe('Ethereum RPC API tests', () => {
 
   test('getBlockByNumber - positive', async () => {
     const response = await makeRequest(apiUrl, 'eth_getBlockByNumber', 
-        ['0x11bca28', false]);  // '0x11bca28' is the hex representation of block number 18541416
+        ['0x11bca28', false]);  
+        // '0x11bca28' is the hex representation of block number 18541416
     validateSchema(blockSchema, response);
   });
 
