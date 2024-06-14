@@ -7,7 +7,12 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:  # Manual workflow dispatch trigger
+  workflow_dispatch:
+    inputs:
+        test_type:
+            description: 'Type of tests to run'
+            required: true
+            default: 'api'
 
 jobs:
   build:
@@ -29,7 +34,7 @@ jobs:
         run: npx playwright install chrome
 
       - name: Run tests
-        run: npm run test:api -- --ENV="qaApi"
+        run: npm run test:api --ENV="qaApi"
         env:
           npm_config_ENV: "qa"
 
