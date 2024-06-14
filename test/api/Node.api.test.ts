@@ -4,7 +4,7 @@ import { test, expect } from '@playwright/test';
 import axios from 'axios';
 import { blockNumberSchema, blockSchema, transactionSchema } from '../../test_data/api/schemas/nodeSchemas';
 import { apiUrl, apiKey, testData } from '../../test_data/api/testData/nodeTestData';
-import { APIActions } from '@lib/APIActions';
+import { APIActions } from '../../lib/APIActions';
 
 let apiActions: APIActions;
 

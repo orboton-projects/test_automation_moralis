@@ -1,8 +1,8 @@
-import { test, expect, request } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { nftSchema } from '../../test_data/api/schemas/nftSchemas';
 import { apiKey, inValidTestAddress, validTestAddress } from '../../test_data/api/testData/nftTestData';
 import Moralis from 'moralis';
-import { MoralisActions } from '@lib/MoralisAction';
+import { MoralisActions } from '../../lib/MoralisAction';
 
 let moralisActions: MoralisActions;
 let moralisStarted = false; // Flag to ensure Moralis is started only once

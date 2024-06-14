@@ -1,7 +1,7 @@
 import { test, request } from '@playwright/test';
 import Ajv, { JSONSchemaType } from 'ajv';
-import { apiKey } from 'test_data/api/testData/nftTestData';
-import { baseURL, testData } from 'test_data/api/testData/nodeTestData';
+import { apiKey } from '../../test_data/api/testData/nftTestData';
+import { baseURL, testData } from '../../test_data/api/testData/nodeTestData';
 
 const ajv = new Ajv();
 

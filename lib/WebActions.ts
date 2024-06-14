@@ -2,7 +2,7 @@ import fs from 'fs';
 import * as CryptoJS from 'crypto-js';
 import type { Page } from '@playwright/test';
 import { BrowserContext } from '@playwright/test';
-import { testConfig } from 'testConfig';
+import { testConfig } from '../testConfig';
 
 export class WebActions {
     readonly page: Page;
