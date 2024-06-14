@@ -9,10 +9,10 @@ on:
       - main
   workflow_dispatch:
     inputs:
-        test_type:
-            description: 'Type of tests to run'
-            required: true
-            default: 'api'
+      test_type:
+        description: 'Type of tests to run'
+        required: true
+        default: 'api'  # Default value if not specified
 
 jobs:
   build:
@@ -34,7 +34,12 @@ jobs:
         run: npx playwright install chrome
 
       - name: Run tests
-        run: npm run test:api --ENV="qaApi"
+        run: |
+          if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
+            npm run test:ui --ENV="qa"
+          else
+            npm run test:api --ENV="qaApi"
+          fi
         env:
           npm_config_ENV: "qa"
 
