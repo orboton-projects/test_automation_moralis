@@ -4,6 +4,6 @@ export const testConfig = {
     qaApi: `https://site1.moralis-nodes.com`,
     devApi: ``,
     email: `orboton@gmail.com`,
-    password: `Admin123`,
+    password: `U2FsdGVkX19UM6fosWwUmJTmbgIiVtCZbNPW0kr6fYk=`,
     waitForElement: 12000,
 }

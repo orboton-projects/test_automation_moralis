@@ -2,7 +2,7 @@ import { test, expect, Page } from '@playwright/test';
  
  // Negative scenarios for login
  test.describe.skip('This negative tests are skipped as its just traditional framework sample', () => {
-    test('should not login with invalid email', { tag: '@Smoke'}, async ({ page }) => {
+    test('should not login with invalid email', { tag: '@UI'}, async ({ page }) => {
         await page.goto('https://admin.moralis.io/');
   
         // Check if the "Accept all" button exists and click it if present
@@ -19,7 +19,7 @@ import { test, expect, Page } from '@playwright/test';
         await expect(page.getByTestId('test-notification-title')).toContainText('Something went wrong!');
     });
 
-    test('should not login with invalid password', async ({ page }) => {
+    test('should not login with invalid password', { tag: '@UI'}, async ({ page }) => {
         await page.goto('https://admin.moralis.io/');
   
         // Check if the "Accept all" button exists and click it if present
@@ -35,7 +35,7 @@ import { test, expect, Page } from '@playwright/test';
         await expect(page.getByTestId('test-notification-title')).toContainText('Something went wrong!');
     });
 
-    test('should not login with empty email', async ({ page }) => {
+    test('should not login with empty email', { tag: '@UI'}, async ({ page }) => {
         await page.goto('https://admin.moralis.io/');
   
         // Check if the "Accept all" button exists and click it if present

@@ -4,7 +4,7 @@ import { rimraf } from 'rimraf';
 async function globalSetup(config: FullConfig): Promise<void> {
   console.log('Running global setup...');
 
-  const directoryPath = './allure-results';
+  const directoryPath = './html-report';
   try {
     await rimraf(directoryPath);
     console.log(`${directoryPath} deleted successfully.`);

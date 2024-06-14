@@ -1,12 +1,8 @@
-
-
-// We can use Steps like in Cucmber format as shown below
-
 import test from "../../lib/BaseTest";
 
 
 test.describe('Positive Login Scenarios', () => {
-    test(`Verify Homepage Login`, { tag: '@Smoke'}, async ({ loginPage, homePage}) => {
+    test(`Verify Homepage Login`, { tag: '@UI'}, async ({ loginPage, homePage}) => {
     await test.step(`Navigate to Application`, async () => {
         await loginPage.navigateToURL();
     });
@@ -26,7 +22,7 @@ test.describe('Positive Login Scenarios', () => {
 // Negative Tests
 test.describe('Negative Login Scenarios', () => {
 
-    test(`Should not login with invalid email`, { tag: '@Smoke'}, async ({ loginPage }) => {
+    test(`Should not login with invalid email`, { tag: '@UI'}, async ({ loginPage }) => {
     await test.step(`Navigate to Application`, async () => {
         await loginPage.navigateToURL();
     });
@@ -41,7 +37,7 @@ test.describe('Negative Login Scenarios', () => {
     });  });
 
 
-    test(`Should not login with invalid password`, { tag: '@Smoke'}, async ({ loginPage }) => {
+    test(`Should not login with invalid password`, { tag: '@UI'}, async ({ loginPage }) => {
         await test.step(`Navigate to Application`, async () => {
             await loginPage.navigateToURL();
         });
@@ -55,7 +51,7 @@ test.describe('Negative Login Scenarios', () => {
             await loginPage.verifySomethingWentWrong();
         });
     });  
-    test(`Should not login with empty email`, { tag: '@Smoke'}, async ({ loginPage }) => {
+    test(`Should not login with empty email`, { tag: '@UI'}, async ({ loginPage }) => {
         await test.step(`Navigate to Application`, async () => {
             await loginPage.navigateToURL();
         });

@@ -22,7 +22,6 @@ test.describe('Moralis NFT API Tests', { tag: '@API' }, () => {
   test('Positive Scenario: Get Wallet NFTs', async () => {
     try {
       const response = await moralisActions.getWalletNFTs(validTestAddress);
-      console.log('Response:', response);  // Log the entire response for debugging
       expect(response).toBeDefined();
 
       // Ensure the result array is defined and has items

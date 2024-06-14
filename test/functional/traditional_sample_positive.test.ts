@@ -46,7 +46,7 @@ test.afterEach(async ({ page }) => {
 });
 
 test.describe.skip('This test is skipped as its just traditional framework sample', () => {
-  test('Should create and delete a node', async ({ page }) => {
+  test('Should create and delete a node', { tag: '@UI'}, async ({ page }) => {
     if (!loginSuccessful) {
       console.log('Login was not successful, skipping test.');
       return;
@@ -74,7 +74,5 @@ test.describe.skip('This test is skipped as its just traditional framework sampl
     await page.getByTestId('mui-button-destructive').click();
     await expect(page.locator('#main_top')).toContainText('You don’t have any Nodes yet');
   });
-
-  // Negative scenarios for login
 
 });

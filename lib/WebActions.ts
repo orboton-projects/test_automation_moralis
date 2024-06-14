@@ -1,6 +1,8 @@
 import fs from 'fs';
+import * as CryptoJS from 'crypto-js';
 import type { Page } from '@playwright/test';
 import { BrowserContext } from '@playwright/test';
+import { testConfig } from 'testConfig';
 
 export class WebActions {
     readonly page: Page;
@@ -9,6 +11,15 @@ export class WebActions {
     constructor(page: Page, context: BrowserContext) {
         this.page = page;
         this.context = context;
+    }
+
+    async decipherPassword(): Promise<string> {
+        const key = `SECRET`;
+        //ENCRYPT
+        // To change password uncomment the below block and replace the "password" and run test.
+        // const cipher = CryptoJS.AES.encrypt('password',key);
+        // console.log(cipher.toString());
+        return CryptoJS.AES.decrypt(testConfig.password, key).toString(CryptoJS.enc.Utf8);
     }
 
     async delay(time: number): Promise<void> {

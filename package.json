@@ -4,12 +4,12 @@
   "description": "Playwright Framework with Typescript",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "test:login": "npx playwright test --workers=1 --grep @Smoke",
-    "test:ui": "npx playwright test --grep @Smoke --ui",
+    "test:single": "npx playwright test Login.ui.test.ts --project=Chrome",
+    "test:ui": "npx playwright test --grep @UI",
     "test:api": "npx playwright test --grep @API --workers=1",
-    "test:record": "npx playwright codegen",
-    "allureReport": "allure serve"
+    "test:parallel": "npx playwright test --project=Chrome",
+    "test:serial": "npx playwright test --workers=1 --project=Chrome",
+    "test:record": "npx playwright codegen"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,6 @@
     "@typescript-eslint/parser": "^7.8.0",
     "adm-zip": "^0.5.12",
     "ajv": "^8.16.0",
-    "allure-playwright": "^2.15.1",
     "clipboardy": "^4.0.0",
     "crypto-js": "^4.2.0",
     "eslint": "^8.57.0",

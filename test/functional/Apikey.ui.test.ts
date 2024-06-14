@@ -1,11 +1,8 @@
-
-
-// We can use Steps like in Cucmber format as shown below
-
 import test from "../../lib/BaseTest";
 
 
-test.describe('Positive Login Scenarios', () => {test(`Verify API Keys`, { tag: '@Smoke'}, async ({ loginPage, homePage, apiKeysPage }) => {
+test.describe.skip('Positive Login Scenarios - Skipped due to captcha', { tag: '@UI' }, () => {
+    test(`Verify API Keys`, { tag: '@UI' }, async ({ loginPage, homePage, apiKeysPage }) => {
     await test.step(`Navigate to Application`, async () => {
         await loginPage.navigateToURL();
     });
@@ -35,7 +32,7 @@ test.describe('Positive Login Scenarios', () => {test(`Verify API Keys`, { tag: 
 
 });
 
-test(`Verify Default API Keys cannot be deleted`, { tag: '@Smoke'}, async ({ loginPage, homePage, apiKeysPage }) => {
+test(`Verify Default API Keys cannot be deleted`, { tag: '@UI' }, async ({ loginPage, homePage, apiKeysPage }) => {
     await test.step(`Navigate to Application`, async () => {
         await loginPage.navigateToURL();
     });
@@ -69,7 +66,7 @@ test(`Verify Default API Keys cannot be deleted`, { tag: '@Smoke'}, async ({ log
     }); 
 
 
-test(`Verify API Keys cannot be created on free account`, { tag: '@Smoke'}, async ({ loginPage, homePage, apiKeysPage }) => {
+test(`Verify API Keys cannot be created on free account`, { tag: '@UI' }, async ({ loginPage, homePage, apiKeysPage }) => {
     await test.step(`Navigate to Application`, async () => {
     await loginPage.navigateToURL();
 });

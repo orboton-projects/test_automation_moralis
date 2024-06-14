@@ -7,12 +7,12 @@ let webActions: WebActions;
 export class LoginPage {
     readonly page: Page;
     readonly context: BrowserContext;
-    
 
     constructor(page: Page, context: BrowserContext) {
         this.page = page;
         this.context = context;
         webActions = new WebActions(this.page, this.context);
+        
     }
 
     async navigateToURL(): Promise<void> {
@@ -27,10 +27,11 @@ export class LoginPage {
     }
 
     async loginToApplication(): Promise<void> {
+        const decipherPassword = await webActions.decipherPassword();
         await this.page.getByTestId('test-email').getByTestId('test-typography').click();
         await this.page.getByTestId('test-email').getByTestId('test-input-input').fill(testConfig.email);
         await this.page.getByTestId('test-password').getByTestId('test-typography').click();
-        await this.page.getByTestId('test-password').getByTestId('test-input-input').fill(testConfig.password);
+        await this.page.getByTestId('test-password').getByTestId('test-input-input').fill(decipherPassword);
         await this.page.getByTestId('test-button').click();
     }
 
@@ -40,10 +41,11 @@ export class LoginPage {
     }
 
     async loginWithInvalidEmail(): Promise<void> {
+        const decipherPassword = await webActions.decipherPassword();
         await this.page.getByTestId('test-email').getByTestId('test-typography').click();
         await this.page.getByTestId('test-email').getByTestId('test-input-input').fill('invalid-email@example.com');
         await this.page.getByTestId('test-password').getByTestId('test-typography').click();
-        await this.page.getByTestId('test-password').getByTestId('test-input-input').fill(testConfig.password);
+        await this.page.getByTestId('test-password').getByTestId('test-input-input').fill(decipherPassword);
         await this.page.getByTestId('test-button').click();
     }
 
@@ -56,10 +58,11 @@ export class LoginPage {
     }
 
     async loginWithEmptyEmail(): Promise<void> {
+        const decipherPassword = await webActions.decipherPassword();
         await this.page.getByTestId('test-email').getByTestId('test-typography').click();
         await this.page.getByTestId('test-email').getByTestId('test-input-input').fill('');
         await this.page.getByTestId('test-password').getByTestId('test-typography').click();
-        await this.page.getByTestId('test-password').getByTestId('test-input-input').fill(testConfig.password);
+        await this.page.getByTestId('test-password').getByTestId('test-input-input').fill(decipherPassword);
     }
 
     async verifySomethingWentWrong(): Promise<void> {

@@ -1,6 +1,4 @@
-import {testConfig} from '../../testConfig'
-
-
+export const baseURL = 'https://site1.moralis-nodes.com';
 export const apiUrl = '/eth/';
 export const apiKey = '1ee8a759c5fb48fe994bdeb7eddafdb5';
 
