@@ -1,5 +1,5 @@
 # Name of the GitHub Actions workflow
-name: Moralis Test Automation
+name: Moralis Test Automation Workflow 
 
 # Define when to trigger this workflow
 on:
