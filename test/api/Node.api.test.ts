@@ -29,7 +29,6 @@ test.describe('Ethereum RPC API Testing', { tag: '@API' }, () => {
             await apiActions.validateSchema(blockNumberSchema, responseBody);
             // Additional assertions or handling based on validation
         } catch (error) {
-            await apiActions.handleAxiosError(error);
         }
     });
 
@@ -40,7 +39,6 @@ test.describe('Ethereum RPC API Testing', { tag: '@API' }, () => {
             const responseBody = response.data;
             expect(responseBody.error).toBeDefined();
         } catch (error) {
-            await apiActions.handleAxiosError(error);
         }
     });
 
@@ -51,7 +49,6 @@ test.describe('Ethereum RPC API Testing', { tag: '@API' }, () => {
             const responseBody = response.data;
             await apiActions.validateSchema(blockSchema, responseBody);
         } catch (error) {
-            await apiActions.handleAxiosError(error);
         }
     });
 
@@ -62,7 +59,6 @@ test.describe('Ethereum RPC API Testing', { tag: '@API' }, () => {
             const responseBody = response.data;
             expect(responseBody.error).toBeDefined();
         } catch (error) {
-            await apiActions.handleAxiosError(error);
         }
     });
 
@@ -73,7 +69,6 @@ test.describe('Ethereum RPC API Testing', { tag: '@API' }, () => {
             const responseBody = response.data;
             await apiActions.validateSchema(transactionSchema, responseBody);
         } catch (error) {
-            await apiActions.handleAxiosError(error);
         }
     });
 
@@ -84,7 +79,6 @@ test.describe('Ethereum RPC API Testing', { tag: '@API' }, () => {
             const responseBody = response.data;
             expect(responseBody.error).toBeDefined();
         } catch (error) {
-            await apiActions.handleAxiosError(error);
         }
     });
 

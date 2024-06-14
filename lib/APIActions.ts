@@ -19,13 +19,4 @@ export class APIActions {
     expect(validation.error).toBeNull();
     // Add more specific assertions or handling based on validation if needed
   }
-
-  public async handleAxiosError(error: any) {
-    if (axios.isAxiosError(error)) {
-      console.error('Axios request failed:', error.message);
-      console.error('Response data:', error.response?.data);
-    } else {
-      console.error('Non-Axios error occurred:', error);
-    }
-  }
 }
